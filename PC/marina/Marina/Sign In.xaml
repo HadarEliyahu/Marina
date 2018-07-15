@@ -1,0 +1,81 @@
+﻿<Window x:Class="Marina.Sign_In"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sign_In"
+        Top="0" 
+        ResizeMode="NoResize"
+        MouseDown="dragging"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        BorderThickness="0"
+        Icon="/Images/logo.png"
+        Loaded="CheckIfFileExists"
+        FontFamily="Century Gothic">
+    
+    <Window.Background>
+        <SolidColorBrush Color="#212121"></SolidColorBrush>
+    </Window.Background>
+    <Border BorderBrush="#1d91da" BorderThickness="1" Background="#212121">
+        <!-- Main Grid - row defintioner -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="14*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Top bar -->
+            <Grid Grid.Row="0" Background="#1d91da">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource MinimizeButton}" Content="back" Grid.Column="0" Click="BackWindow"/>
+                <Button Style="{StaticResource MinimizeButton}" Content="_" Grid.Column="2" Click="Minimize"/>
+                <Button Style="{StaticResource XButton}" Content="X" Grid.Column="3" Click="CloseWindow"/>
+            </Grid>
+
+            <Grid Grid.Row="2" >
+                <Image Source="Images/logo_transparent.png"/>
+            </Grid>
+
+            <Grid Grid.Row="4" Margin="50 0 50 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.75*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="0.75*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="0.75*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Style="{StaticResource HintBox}" Text="Email:" Grid.Row="0"></TextBlock>
+                <TextBox Style="{StaticResource ReqBox}" Grid.Row="1" x:Name="UsernameBox"></TextBox>
+                <TextBlock Style="{StaticResource HintBox}" Text="Password:" Grid.Row="2"></TextBlock>
+                <PasswordBox Style="{StaticResource PassBox}" Grid.Row="3" x:Name="PasswordBox"></PasswordBox>
+                <Button Grid.Row="5" Style="{StaticResource SignIn}" Content="Sign In" Grid.Column="2" Click="SignIn" />
+            </Grid>
+
+            <Grid Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Sign Up" FontSize="18" PreviewMouseDown="SignUp">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property= "Foreground" Value="#1d91da"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Foreground" Value="#0072ff"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
